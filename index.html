@@ -104,7 +104,7 @@ button[disabled]{
 
   <div id="mylogin" style="display:none;">
     
-    <h2>Report Login</h2>
+    <h2>WhatsApp Loader Login</h2>
         <div class="loginelement"><b>Account Number</b></div>
 	<input id="accnumb" type="text" placeholder="Enter Account Number">
 	</br>
@@ -118,6 +118,9 @@ button[disabled]{
 	</br>
         
     <button id="submitLogin" >Login</button>
+	</br>
+	</br>
+    <div class="loginLogs"></div>
     
 
 
@@ -152,14 +155,7 @@ button[disabled]{
   var bearer = localStorage.getItem('bearer');
 
 
-	
-	
-  
-	
 
-	
-	
-	
   	
   
   function checklogin(accnumb, bearer){	
@@ -227,7 +223,10 @@ checklogin(accnumb, bearer);
 		  $('#myloader').css('display', 'inline');
 		  setTimeout(function(){
 			  localStorage.setItem('account_number', '');
-			  location.reload();
+			  localStorage.setItem('bearer', '');
+			  localStorage.setItem('csrf', '');
+			  $('#myloader').css('display', 'none');
+			  $('#mylogin').css('display', 'inline');
 		  }, 2000);
 	  }
 
