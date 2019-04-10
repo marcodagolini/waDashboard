@@ -221,6 +221,7 @@ checklogin(accnumb, bearer);
 	  if($(evt.target).is('#logout')) {
 		  $('#myreports').css('display', 'none');
 		  $('#myloader').css('display', 'inline');
+		  $('#pwd').val("");
 		  setTimeout(function(){
 			  localStorage.setItem('account_number', '');
 			  localStorage.setItem('bearer', '');
