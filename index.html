@@ -121,7 +121,7 @@ button[disabled]{
     <button id="submitLogin" >Login</button>
 	</br>
 	</br>
-    <div class="loginLogs"></div>
+    <div id="loginLogs"></div>
     
 
 
@@ -242,6 +242,7 @@ checklogin(accnumb, bearer);
 			  pwd = $("#pwd").val();
 			  accnumb = $("#accnumb").val();
 			  console.log(accnumb + " *** " + uname + " *** " + pwd);
+			  document.getElementById("loginLogs").innerHTML = "";
 			  $.ajax({
 				  url: "https://adminlogin.liveperson.net/csdr/account/" + accnumb + "/service/agentVep/baseURI.lpCsds?version=1.0",
 				  jsonp: "cb",
@@ -275,11 +276,6 @@ checklogin(accnumb, bearer);
 								  setTimeout(function(){
 									  $('#myloader').css('display', 'none');
 									  $('#myreports').css('display', 'inline');
-									  retrieveAgentsLogged();  // loads also the conversations
-									  loadBar();
-									  loadSkills();
-									  loadTeams();
-									  refreshTranscripts();
 									  
 									  $('#loadedStats').css('display', 'none');
 									  $('#loadingStats').css('display', 'inline');  
@@ -287,8 +283,8 @@ checklogin(accnumb, bearer);
 								  }, 2000);
 							  },
 							  error: function error(e, text) {
-								  document.getElementById("sendStat").innerHTML = "Please insert a correct login!";
-								  document.getElementById("sendStat").style = "color : red";
+								  document.getElementById("loginLogs").innerHTML = "Please insert a correct login!";
+								  document.getElementById("loginLogs").style = "color : red";
 							  }
 						  });
 						  return data;
