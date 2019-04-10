@@ -233,7 +233,8 @@ function processFile(e) {
 	    results;
 	if (file && file.length) {
 		results = file.split(",");
-		console.log(results);
+		var myJson = {"bearer" : bearer, "phoneNumbers" : results};
+		console.log(myJson);
 	}
 }
 	
