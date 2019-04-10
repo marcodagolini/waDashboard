@@ -134,6 +134,10 @@ button[disabled]{
     </br>
     <div id="version" class="version">v1.1.12</div>
     <button type="button" id ="logout" class="logout" style="float: right;">Log Out</button>
+    </br>
+    </br>
+    <input type=file id=files />
+    <button id=upload>Upload</button>
 
 
 
@@ -187,7 +191,8 @@ button[disabled]{
                               		data: '{\"start":{\"from\":' + (new Date().getTime()-5000) + ',\"to\":'+ new Date().getTime() + '}}',
                               		success: function success(data) {
 						$('#myloader').css('display', 'none');
-          					$('#myreports').css('display', 'inline');	
+          					$('#myreports').css('display', 'inline');
+						loadChooseFile();
                               		},
                               		error: function error(e, text) {
 						localStorage.setItem('account_number', '');
@@ -209,6 +214,44 @@ button[disabled]{
 		  $('#mylogin').css('display', 'inline');
 	  }
   }
+	
+	
+	
+	
+	
+function processFile(e) {
+	var file = e.target.result,
+	    results;
+	if (file && file.length) {
+		// results = file.split("\n");
+		console.log(results);
+	}
+}
+	
+	
+	
+function loadChooseFile(){
+	var fileInput = $('#files');
+	var uploadButton = $('#upload');
+
+	uploadButton.on('click', function() {
+		if (!window.FileReader) {
+			alert('Your browser is not supported')
+		}
+		var input = fileInput.get(0);
+		// Create a reader object
+		var reader = new FileReader();
+		if (input.files.length) {
+			var textFile = input.files[0];
+			reader.readAsText(textFile);
+			$(reader).on('load', processFile);
+		} else {
+			alert('Please upload a file before continuing')
+		}
+	});
+
+
+}
 	
 	
 checklogin(accnumb, bearer);
@@ -277,9 +320,9 @@ checklogin(accnumb, bearer);
 								  setTimeout(function(){
 									  $('#myloader').css('display', 'none');
 									  $('#myreports').css('display', 'inline');
-									  
 									  $('#loadedStats').css('display', 'none');
-									  $('#loadingStats').css('display', 'inline');  
+									  $('#loadingStats').css('display', 'inline');
+									  loadChooseFile();
 									  
 								  }, 2000);
 							  },
