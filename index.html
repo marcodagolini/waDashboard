@@ -238,10 +238,12 @@ function processFile(e) {
 	if (file && file.length) {
 		results = file.split(",");
 		var myTrafficLight = 1;
+		var myError = "";
 		var myArrayLength = results.length;
 		for(var i = 0; i < myArrayLength; i++){
 			if(!(/^\d+$/.test(results[i]))){
 				myTrafficLight = 0;
+				myError = results[i];
 				i = myArrayLength;
 			}
 		}
@@ -249,7 +251,7 @@ function processFile(e) {
 			var myJson = {"bearer" : bearer, "phoneNumbers" : results};
 			console.log(myJson);
 		} else{
-			document.getElementById("massiveUploadLogs").innerHTML = "Please insert a correct login!";
+			document.getElementById("massiveUploadLogs").innerHTML = "Your file contains a wrong field (" + myError + ")";
 			document.getElementById("massiveUploadLogs").style = "color : red";
 		}
 		
