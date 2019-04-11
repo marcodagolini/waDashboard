@@ -370,7 +370,10 @@ checklogin(accnumb, bearer);
 		  document.getElementById("singleUploadLogs").innerHTML = '';
 		  var telefono = $("#telefono").val();
 		  if((/^\d+$/.test(telefono))){
-			  console.log(telefono);
+			  var myArray = [];
+			  myArray[0] = telefono
+			  var myJson = {"bearer" : bearer, "phoneNumbers" : myArray};
+			  console.log(myJson);
 		  } else{
 			  document.getElementById("singleUploadLogs").innerHTML = 'wrong phone number format';
 			  document.getElementById("singleUploadLogs").style = "color : red";  
@@ -381,7 +384,10 @@ checklogin(accnumb, bearer);
 		  document.getElementById("singleUploadLogs").innerHTML = '';
 		  var telefono = $("#telefono").val();
 		  if((/^\d+$/.test(telefono))){
-			  console.log(telefono);
+			  var myArray = [];
+			  myArray[0] = telefono
+			  var myJson = {"bearer" : bearer, "phoneNumbers" : myArray};
+			  console.log(myJson);
 		  } else{
 			  document.getElementById("singleUploadLogs").innerHTML = 'wrong phone number format';
 			  document.getElementById("singleUploadLogs").style = "color : red";  
