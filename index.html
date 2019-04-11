@@ -250,7 +250,7 @@ function processFile(e) {
 			var myJson = {"bearer" : bearer, "phoneNumbers" : results};
 			console.log(myJson);
 		} else{
-			document.getElementById("massiveUploadLogs").innerHTML = "Your file contains a wrong field (" + myError + ")";
+			document.getElementById("massiveUploadLogs").innerHTML = 'Your file contains a wrong field --> ' + '"' + myError + '"';
 			document.getElementById("massiveUploadLogs").style = "color : red";
 		}
 		
