@@ -149,6 +149,9 @@ button[disabled]{
     </br>
     <input type=file id=files />
     <button id=upload>Upload</button>
+    </br>
+    </br>
+    <div id="massiveUploadLogs"></div>
 
 
 
@@ -235,8 +238,23 @@ function processFile(e) {
 	    results;
 	if (file && file.length) {
 		results = file.split(",");
-		var myJson = {"bearer" : bearer, "phoneNumbers" : results};
-		console.log(myJson);
+		var myTrafficLight = 1;
+		var myArrayLength = results.length;
+		for(var i = 0; i < myArrayLength; i++){
+			if(!(/^\d+$/.test(results[i]))){
+				myTrafficLight = 0;
+				i = myArrayLength;
+			}
+		}
+		if(myTrafficLight){
+			var myJson = {"bearer" : bearer, "phoneNumbers" : results};
+			console.log(myJson);
+		} else{
+			document.getElementById("massiveUploadLogs").innerHTML = "Please insert a correct login!";
+			document.getElementById("massiveUploadLogs").style = "color : red";
+		}
+		
+		
 	}
 }
 	
@@ -257,6 +275,7 @@ function loadChooseFile(){
 			var textFile = input.files[0];
 			reader.readAsText(textFile);
 			$(reader).on('load', processFile);
+			document.getElementById("massiveUploadLogs").innerHTML = "";
 		} else {
 			alert('Please upload a file before continuing')
 		}
