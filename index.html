@@ -209,6 +209,8 @@ label {
     </br>
     <button id=whitelist>Whitelist</button>
     <button id=blacklist>Blacklist</button>
+    </br>
+    <div id="singleUploadLogs"></div>
 
 
 
@@ -363,6 +365,28 @@ checklogin(accnumb, bearer);
 			  $('#myloader').css('display', 'none');
 			  $('#mylogin').css('display', 'inline');
 		  }, 2000);
+	  }
+	  if($(evt.target).is('#whitelist')) {
+		  document.getElementById("singleUploadLogs").innerHTML = '';
+		  var telefono = $("#telefono").val();
+		  if((/^\d+$/.test(telefono))){
+			  console.log(telefono);
+		  } else{
+			  document.getElementById("singleUploadLogs").innerHTML = 'wrong phone number format';
+			  document.getElementById("singleUploadLogs").style = "color : red";  
+		  }
+
+	  }
+	  if($(evt.target).is('#blacklist')) {
+		  document.getElementById("singleUploadLogs").innerHTML = '';
+		  var telefono = $("#telefono").val();
+		  if((/^\d+$/.test(telefono))){
+			  console.log(telefono);
+		  } else{
+			  document.getElementById("singleUploadLogs").innerHTML = 'wrong phone number format';
+			  document.getElementById("singleUploadLogs").style = "color : red";  
+		  }
+
 	  }
 
   });
