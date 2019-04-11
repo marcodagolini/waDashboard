@@ -198,7 +198,7 @@ button[disabled]{
                               		jsonpCallback: "domainCallback",
                               		cache: true,
                               		contentType: "application/json",
-                              		data: '{\"start":{\"from\":' + (new Date().getTime()-5000) + ',\"to\":'+ new Date().getTime() + '}}',
+                              		data: '{\"start":{\"from\":' + (new Date().getTime()-5000) + ',\"to\":'+ new Date().getTime() + '},\"status\":[\"CLOSE\"]}',
                               		success: function success(data) {
 						$('#myloader').css('display', 'none');
           					$('#myreports').css('display', 'inline');
