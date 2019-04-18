@@ -405,6 +405,8 @@ checklogin(accnumb, bearer);
 			  console.log(myJson);
 		  } else if(isJson(telefono)){
 			  var myTrafficLight = 0;
+			  telefono = "[" + telefono + "]";
+			  telefono = JSON.parse(telefono);
 			  var myArrayLength = telefono.length;
 			  if (myArrayLength > 0){
 				  myTrafficLight = 1;
@@ -420,7 +422,7 @@ checklogin(accnumb, bearer);
 			  if(myTrafficLight){
 				  document.getElementById("singleUploadLogs").innerHTML = 'Done!';
 				  document.getElementById("singleUploadLogs").style = "color : green";
-				  telefono = "[" + telefono + "]";
+				  
 				  var myJson = {"bearer" : bearer, "phoneNumbers" : JSON.parse(telefono)};
 				  console.log(myJson);
 			  } else{
