@@ -401,6 +401,8 @@ checklogin(accnumb, bearer);
 			  var myArray = [];
 			  myArray[0] = {"numero": telefono};
 			  var myJson = {"bearer" : bearer, "phoneNumbers" : myArray};
+			  document.getElementById("singleUploadLogs").innerHTML = 'Done!';
+			  document.getElementById("singleUploadLogs").style = "color : green";
 			  console.log(myJson);
 		  } else if(isJson(telefono)){
 			  var myTrafficLight = 1;
