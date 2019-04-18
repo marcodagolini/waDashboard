@@ -441,7 +441,7 @@ checklogin(accnumb, bearer);
 		  var telefono = $("#telefono").val();
 		  if((/^\d+$/.test(telefono))){
 			  var myArray = [];
-			  myArray[0] = telefono
+			  myArray[0] = {"numero": telefono};
 			  var myJson = {"bearer" : bearer, "phoneNumbers" : myArray};
 			  document.getElementById("singleUploadLogs").innerHTML = 'Done!';
 			  document.getElementById("singleUploadLogs").style = "color : green";
