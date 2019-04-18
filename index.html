@@ -363,7 +363,9 @@ function loadChooseFile(){
 
 	uploadButton.on('click', function() {
 		if (!window.FileReader) {
-			alert('Your browser is not supported')
+			document.getElementById("massiveUploadLogs").innerHTML = 'Your browser is not supported!';
+			document.getElementById("massiveUploadLogs").style = "color : red";
+			refreshAlerts();
 		}
 		var input = fileInput.get(0);
 		// Create a reader object
@@ -374,7 +376,9 @@ function loadChooseFile(){
 			$(reader).on('load', processFile);
 			document.getElementById("massiveUploadLogs").innerHTML = "";
 		} else {
-			alert('Please upload a file before continuing')
+			document.getElementById("massiveUploadLogs").innerHTML = 'Please upload a file before continuing!';
+			document.getElementById("massiveUploadLogs").style = "color : red";
+			refreshAlerts();
 		}
 	});
 
