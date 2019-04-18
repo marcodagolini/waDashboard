@@ -296,8 +296,8 @@ function processFile(e) {
 	var file = e.target.result,
 	    results;
 	if (file && file.length) {
-		console.log(results);
-		console.log("array or not? --> " + Array.isArray(results));
+		console.log(file);
+		console.log("array or not? --> " + Array.isArray(file));
 		results = file.split(",");
 		var myTrafficLight = 1;
 		var myError = "";
