@@ -409,18 +409,14 @@ checklogin(accnumb, bearer);
 			  var myTrafficLight = 1;
 			  telefono = "[" + telefono + "]";
 			  telefono = JSON.parse(telefono);
-			  var myArrayLength = telefono.length;
-			  for(var i = 0; i < myArrayLength; i++){
-				if(telefono[i].hasOwnProperty('numero')){
-					if(!(/^\d+$/.test(telefono[i].numero))){
-						myTrafficLight = 0;
-						i = myArrayLength;
-					}
-				} else{
-					myTrafficLight = 0;
-					i = myArrayLength;
-				}
+			  if(telefono[0].hasOwnProperty('numero')){
+				  if(!(/^\d+$/.test(telefono[0].numero))){
+					  myTrafficLight = 0;
+				  }
+			  } else{
+				  myTrafficLight = 0;
 			  }
+			  
 			  if(myTrafficLight){
 				  document.getElementById("singleUploadLogs").innerHTML = 'Done!';
 				  document.getElementById("singleUploadLogs").style = "color : green";
