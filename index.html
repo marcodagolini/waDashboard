@@ -403,8 +403,11 @@ checklogin(accnumb, bearer);
 			  var myJson = {"bearer" : bearer, "phoneNumbers" : myArray};
 			  console.log(myJson);
 		  } else if(isJson(telefono)){
+			  var myTrafficLight = 0;
 			  var myArrayLength = telefono.length;
-			  var myTrafficLight = 1;
+			  if (myArrayLength > 0){
+				  myTrafficLight = 1;
+			  }
 			  for(var i = 0; i < myArrayLength; i++){
 				if(telefono[i].hasOwnProperty('numero')){
 					if(!(/^\d+$/.test(telefono[i].numero))){
