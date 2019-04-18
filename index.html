@@ -402,9 +402,26 @@ checklogin(accnumb, bearer);
 			  var myJson = {"bearer" : bearer, "phoneNumbers" : myArray};
 			  console.log(myJson);
 		  } else if(isJson(telefono)){
-			  telefono = "[" + telefono + "]";
-			  var myJson = {"bearer" : bearer, "phoneNumbers" : JSON.parse(telefono)};
-			  console.log(myJson);
+			  var myArrayLength = telefono.length;
+			  var myTrafficLight = 1;
+			  for(var i = 0; i < myArrayLength; i++){
+				if(telefono[i].hasOwnProperty('numero')){
+					if(!(/^\d+$/.test(telefono[i].numero))){
+						myTrafficLight = 0;
+						i = myArrayLength;
+					}
+				}
+			  }
+			  if(myTrafficLight){
+				  document.getElementById("singleUploadLogs").innerHTML = 'Done!';
+				  document.getElementById("singleUploadLogs").style = "color : green";
+				  telefono = "[" + telefono + "]";
+				  var myJson = {"bearer" : bearer, "phoneNumbers" : JSON.parse(telefono)};
+				  console.log(myJson);
+			  } else{
+				  document.getElementById("singleUploadLogs").innerHTML = 'wrong JSON number format';
+				  document.getElementById("singleUploadLogs").style = "color : red";
+			  }  
 		  } else{
 			  document.getElementById("singleUploadLogs").innerHTML = 'wrong phone number format';
 			  document.getElementById("singleUploadLogs").style = "color : red";  
