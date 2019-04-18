@@ -308,7 +308,7 @@ function processFile(e) {
 				if(file[i].hasOwnProperty('numero')){
 					if(!(/^\d+$/.test(file[i].numero))){
 						myTrafficLight = 0;
-						myError = results[i];
+						myError = file[i];
 						i = myArrayLength;
 					}
 				} else{
