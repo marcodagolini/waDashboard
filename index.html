@@ -346,9 +346,11 @@ function processFile(e) {
 			console.log(myJson);
 			document.getElementById("massiveUploadLogs").innerHTML = 'Done!';
 			document.getElementById("massiveUploadLogs").style = "color : green";
+			refreshAlerts();
 		} else{
 			document.getElementById("massiveUploadLogs").innerHTML = 'Your file contains a wrong field --> ' + '"' + JSON.stringify(myError) + '"';
 			document.getElementById("massiveUploadLogs").style = "color : red";
+			refreshAlerts();
 		}
 		
 		
@@ -412,6 +414,7 @@ checklogin(accnumb, bearer);
 			  document.getElementById("telefono").value = ""
 			  document.getElementById("singleUploadLogs").innerHTML = 'Done!';
 			  document.getElementById("singleUploadLogs").style = "color : green";
+			  refreshAlerts();
 			  console.log(myJson);
 		  } else if(isJson(telefono)){
 			  var myTrafficLight = 1;
@@ -429,15 +432,18 @@ checklogin(accnumb, bearer);
 				  document.getElementById("singleUploadLogs").innerHTML = 'Done!';
 				  document.getElementById("singleUploadLogs").style = "color : green";
 				  document.getElementById("telefono").value = ""
+				  refreshAlerts();
 				  var myJson = {"bearer" : bearer, "phoneNumbers" : telefono};
 				  console.log(myJson);
 			  } else{
 				  document.getElementById("singleUploadLogs").innerHTML = 'wrong JSON number format';
 				  document.getElementById("singleUploadLogs").style = "color : red";
+				  refreshAlerts();
 			  }  
 		  } else{
 			  document.getElementById("singleUploadLogs").innerHTML = 'wrong phone number format';
-			  document.getElementById("singleUploadLogs").style = "color : red";  
+			  document.getElementById("singleUploadLogs").style = "color : red";
+			  refreshAlerts();
 		  }
 
 	  }
@@ -451,10 +457,12 @@ checklogin(accnumb, bearer);
 			  document.getElementById("telefono").value = ""
 			  document.getElementById("singleUploadLogs").innerHTML = 'Done!';
 			  document.getElementById("singleUploadLogs").style = "color : green";
+			  refreshAlerts();
 			  console.log(myJson);
 		  } else{
 			  document.getElementById("singleUploadLogs").innerHTML = 'wrong phone number format';
-			  document.getElementById("singleUploadLogs").style = "color : red";  
+			  document.getElementById("singleUploadLogs").style = "color : red";
+			  refreshAlerts();
 		  }
 
 	  }
