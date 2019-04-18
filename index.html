@@ -289,7 +289,23 @@ label {
   }
 	
 	
-	
+function isJson(item) {
+    item = typeof item !== "string"
+        ? JSON.stringify(item)
+        : item;
+
+    try {
+        item = JSON.parse(item);
+    } catch (e) {
+        return false;
+    }
+
+    if (typeof item === "object" && item !== null) {
+        return true;
+    }
+
+    return false;
+}	
 	
 	
 function processFile(e) {
@@ -382,8 +398,11 @@ checklogin(accnumb, bearer);
 		  var telefono = $("#telefono").val();
 		  if((/^\d+$/.test(telefono))){
 			  var myArray = [];
-			  myArray[0] = telefono
+			  myArray[0] = {"numero": telefono};
 			  var myJson = {"bearer" : bearer, "phoneNumbers" : myArray};
+			  console.log(myJson);
+		  } else if(isJson(telefono)){
+			  var myJson = {"bearer" : bearer, "phoneNumbers" : telefono};
 			  console.log(myJson);
 		  } else{
 			  document.getElementById("singleUploadLogs").innerHTML = 'wrong phone number format';
