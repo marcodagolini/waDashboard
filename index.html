@@ -299,6 +299,7 @@ function processFile(e) {
 	    results;
 	if (file && file.length) {
 		console.log(file);
+		file = JSON.parse(file);
 		console.log(typeof file);
 		console.log("array or not? --> " + Array.isArray(file));
 		results = file.split(",");
