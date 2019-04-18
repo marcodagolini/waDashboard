@@ -5,7 +5,6 @@
 
 
 
-
 <head>
   
 </head>
@@ -319,7 +318,7 @@ function processFile(e) {
 			}
 		}
 		if(myTrafficLight){
-			var myJson = file;
+			var myJson = {"bearer" : bearer, "phoneNumbers" : file};
 			console.log(myJson);
 			document.getElementById("massiveUploadLogs").innerHTML = 'Done!';
 			document.getElementById("massiveUploadLogs").style = "color : green";
