@@ -325,7 +325,7 @@ function processFile(e) {
 			document.getElementById("massiveUploadLogs").innerHTML = 'Done!';
 			document.getElementById("massiveUploadLogs").style = "color : green";
 		} else{
-			document.getElementById("massiveUploadLogs").innerHTML = 'Your file contains a wrong field --> ' + '"' + myError + '"';
+			document.getElementById("massiveUploadLogs").innerHTML = 'Your file contains a wrong field --> ' + '"' + JSON.stringify(myError) + '"';
 			document.getElementById("massiveUploadLogs").style = "color : red";
 		}
 		
