@@ -402,6 +402,7 @@ checklogin(accnumb, bearer);
 			  var myArray = [];
 			  myArray[0] = {"numero": telefono};
 			  var myJson = {"bearer" : bearer, "phoneNumbers" : myArray};
+			  document.getElementById("telefono").value = ""
 			  document.getElementById("singleUploadLogs").innerHTML = 'Done!';
 			  document.getElementById("singleUploadLogs").style = "color : green";
 			  console.log(myJson);
@@ -420,6 +421,7 @@ checklogin(accnumb, bearer);
 			  if(myTrafficLight){
 				  document.getElementById("singleUploadLogs").innerHTML = 'Done!';
 				  document.getElementById("singleUploadLogs").style = "color : green";
+				  document.getElementById("telefono").value = ""
 				  var myJson = {"bearer" : bearer, "phoneNumbers" : telefono};
 				  console.log(myJson);
 			  } else{
@@ -439,6 +441,7 @@ checklogin(accnumb, bearer);
 			  var myArray = [];
 			  myArray[0] = {"numero": telefono};
 			  var myJson = {"bearer" : bearer, "phoneNumbers" : myArray};
+			  document.getElementById("telefono").value = ""
 			  document.getElementById("singleUploadLogs").innerHTML = 'Done!';
 			  document.getElementById("singleUploadLogs").style = "color : green";
 			  console.log(myJson);
