@@ -403,7 +403,8 @@ checklogin(accnumb, bearer);
 			  var myJson = {"bearer" : bearer, "phoneNumbers" : myArray};
 			  console.log(myJson);
 		  } else if(isJson(telefono)){
-			  var myJson = {"bearer" : bearer, "phoneNumbers" : telefono};
+			  telefono = "[" + telefono + "]";
+			  var myJson = {"bearer" : bearer, "phoneNumbers" : JSON.parse(telefono)};
 			  console.log(myJson);
 		  } else{
 			  document.getElementById("singleUploadLogs").innerHTML = 'wrong phone number format';
