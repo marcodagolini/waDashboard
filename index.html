@@ -444,6 +444,8 @@ checklogin(accnumb, bearer);
 			  var myArray = [];
 			  myArray[0] = telefono
 			  var myJson = {"bearer" : bearer, "phoneNumbers" : myArray};
+			  document.getElementById("singleUploadLogs").innerHTML = 'Done!';
+			  document.getElementById("singleUploadLogs").style = "color : green";
 			  console.log(myJson);
 		  } else{
 			  document.getElementById("singleUploadLogs").innerHTML = 'wrong phone number format';
