@@ -301,22 +301,30 @@ function processFile(e) {
 	if (file && file.length) {
 		console.log(file);
 		file = JSON.parse(file);
-		console.log(typeof file);
 		console.log("array or not? --> " + Array.isArray(file));
-		results = file.split(",");
-		var myTrafficLight = 1;
-		var myError = "";
-		var myArrayLength = results.length;
-		for(var i = 0; i < myArrayLength; i++){
-			if(!(/^\d+$/.test(results[i]))){
-				myTrafficLight = 0;
-				myError = results[i];
-				i = myArrayLength;
+		if(Array.isArray(file)){
+			var myArrayLength = file.length;
+			var myTrafficLight = 1;
+			var myError = "";
+			for(var i = 0; i < myArrayLength; i++){
+				if(file[i].hasOwnProperty('numero')){
+					if(!(/^\d+$/.test(file[i].numero))){
+						myTrafficLight = 0;
+						myError = results[i];
+						i = myArrayLength;
+					}
+				} else{
+					myTrafficLight = 0;
+					myError = file[i];
+					i = myArrayLength;
+				}
 			}
 		}
 		if(myTrafficLight){
-			var myJson = {"bearer" : bearer, "phoneNumbers" : results};
+			var myJson = file;
 			console.log(myJson);
+			document.getElementById("massiveUploadLogs").innerHTML = 'Done!';
+			document.getElementById("massiveUploadLogs").style = "color : green";
 		} else{
 			document.getElementById("massiveUploadLogs").innerHTML = 'Your file contains a wrong field --> ' + '"' + myError + '"';
 			document.getElementById("massiveUploadLogs").style = "color : red";
