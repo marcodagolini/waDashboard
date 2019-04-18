@@ -295,6 +295,7 @@ function processFile(e) {
 	var file = e.target.result,
 	    results;
 	if (file && file.length) {
+		console.log(results);
 		console.log("array or not? --> " + Array.isArray(results));
 		results = file.split(",");
 		var myTrafficLight = 1;
