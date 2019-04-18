@@ -421,8 +421,7 @@ checklogin(accnumb, bearer);
 			  if(myTrafficLight){
 				  document.getElementById("singleUploadLogs").innerHTML = 'Done!';
 				  document.getElementById("singleUploadLogs").style = "color : green";
-				  
-				  var myJson = {"bearer" : bearer, "phoneNumbers" : JSON.parse(telefono)};
+				  var myJson = {"bearer" : bearer, "phoneNumbers" : telefono};
 				  console.log(myJson);
 			  } else{
 				  document.getElementById("singleUploadLogs").innerHTML = 'wrong JSON number format';
