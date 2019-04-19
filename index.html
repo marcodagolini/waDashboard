@@ -234,6 +234,44 @@ label {
   var bearer = localStorage.getItem('bearer');
 
 
+	
+function sendMyRequest(tipeOfRequest,myPayload){
+	if(tipeOfRequest === "massiveLoad"){
+		document.getElementById("massiveUploadLogs").innerHTML = "...load in progress...";
+		document.getElementById("massiveUploadLogs").style = "color : red";
+	} else if (tipeOfRequest === "whiteList"){
+		document.getElementById("singleUploadLogs").innerHTML = "...load in progress...";
+		document.getElementById("singleUploadLogs").style = "color : red";
+	} else if (tipeOfRequest === "blackList"){
+		document.getElementById("singleUploadLogs").innerHTML = "...load in progress...";
+		document.getElementById("singleUploadLogs").style = "color : red";
+	}
+
+	var xhr = new XMLHttpRequest();
+	xhr.addEventListener("readystatechange", function () {
+		if (this.readyState === 4) {
+			if(tipeOfRequest === "massiveLoad"){
+				document.getElementById("massiveUploadLogs").innerHTML = "...done!";
+				document.getElementById("massiveUploadLogs").style = "color : green";
+			} else if (tipeOfRequest === "whiteList"){
+				document.getElementById("singleUploadLogs").innerHTML = "...done!";
+				document.getElementById("singleUploadLogs").style = "color : green";
+			} else if (tipeOfRequest === "blackList"){
+				document.getElementById("singleUploadLogs").innerHTML = "...done!";
+				document.getElementById("singleUploadLogs").style = "color : green";
+			}
+
+			console.log(xhr.response);
+			setTimeout(function(){
+				refreshAlerts();
+			}, 3000);
+		}	
+	});
+	var URLforGET = "https://marcowabot.herokuapp.com/add?tipeOfRequest=" + tipeOfRequest  + "&myPayload=" + myPayload;
+	console.log(URLforGET);
+	xhr.open("GET", URLforGET);
+	xhr.send();
+}
 
 	
   	
@@ -343,9 +381,7 @@ function processFile(e) {
 		if(myTrafficLight){
 			var myJson = {"bearer" : bearer, "phoneNumbers" : file};
 			console.log(myJson);
-			document.getElementById("massiveUploadLogs").innerHTML = 'Done!';
-			document.getElementById("massiveUploadLogs").style = "color : green";
-			refreshAlerts();
+			sendMyRequest("massiveLoad",myJson);
 		} else{
 			document.getElementById("massiveUploadLogs").innerHTML = 'Your file contains a wrong field --> ' + '"' + JSON.stringify(myError) + '"';
 			document.getElementById("massiveUploadLogs").style = "color : red";
@@ -414,10 +450,7 @@ checklogin(accnumb, bearer);
 			  var myArray = [];
 			  myArray[0] = {"numero": telefono};
 			  var myJson = {"bearer" : bearer, "phoneNumbers" : myArray};
-			  document.getElementById("telefono").value = ""
-			  document.getElementById("singleUploadLogs").innerHTML = 'Done!';
-			  document.getElementById("singleUploadLogs").style = "color : green";
-			  refreshAlerts();
+			  sendMyRequest("whiteList",myJson);
 			  console.log(myJson);
 		  } else if(isJson(telefono)){
 			  var myTrafficLight = 1;
@@ -432,11 +465,8 @@ checklogin(accnumb, bearer);
 			  }
 			  
 			  if(myTrafficLight){
-				  document.getElementById("singleUploadLogs").innerHTML = 'Done!';
-				  document.getElementById("singleUploadLogs").style = "color : green";
-				  document.getElementById("telefono").value = ""
-				  refreshAlerts();
 				  var myJson = {"bearer" : bearer, "phoneNumbers" : telefono};
+				  sendMyRequest("whiteList",myJson);
 				  console.log(myJson);
 			  } else{
 				  document.getElementById("singleUploadLogs").innerHTML = 'wrong JSON number format';
@@ -457,10 +487,7 @@ checklogin(accnumb, bearer);
 			  var myArray = [];
 			  myArray[0] = {"numero": telefono};
 			  var myJson = {"bearer" : bearer, "phoneNumbers" : myArray};
-			  document.getElementById("telefono").value = ""
-			  document.getElementById("singleUploadLogs").innerHTML = 'Done!';
-			  document.getElementById("singleUploadLogs").style = "color : green";
-			  refreshAlerts();
+			  sendMyRequest("blackList",myJson);
 			  console.log(myJson);
 		  } else{
 			  document.getElementById("singleUploadLogs").innerHTML = 'wrong phone number format';
