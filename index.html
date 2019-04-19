@@ -270,7 +270,8 @@ function sendMyRequest(tipeOfRequest,myPayload){
 	var URLforGET = "https://marcowabot.herokuapp.com/add?tipeOfRequest=" + tipeOfRequest;
 	console.log(URLforGET);
 	xhr.open("POST", URLforGET);
-	xhr.send(JSON.stringify(myPayload));
+	xhr.setRequestHeader("Content-Type", "application/json");
+	xhr.send(myPayload);
 }
 
 	
