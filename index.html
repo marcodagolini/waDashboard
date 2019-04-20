@@ -271,7 +271,7 @@ function sendMyRequest(tipeOfRequest,myPayload){
 	console.log(URLforPOST);
 	xhr.open("POST", URLforPOST, true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xhr.send(myPayload);
+	xhr.send(JSON.stringify(myPayload));
 }
 
 	
