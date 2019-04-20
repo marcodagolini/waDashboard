@@ -262,6 +262,7 @@ function sendMyRequest(tipeOfRequest,myPayload){
 			}
 
 			console.log(xhr.response);
+			console.log(xhr.response.tipeOfRequest);
 			setTimeout(function(){
 				refreshAlerts();
 			}, 3000);
