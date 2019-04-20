@@ -270,8 +270,8 @@ function sendMyRequest(tipeOfRequest,myPayload){
 	});
 	var URLforPOST = "https://marcowabot.herokuapp.com/add?tipeOfRequest=" + tipeOfRequest;
 	console.log(URLforPOST);
-	xhr.open("POST", URLforPOST, false);
-	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhr.open("POST", URLforPOST, true);
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhr.send(JSON.stringify(myPayload));
 }
 
