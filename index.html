@@ -266,10 +266,10 @@ function sendMyRequest(tipeOfRequest,myPayload){
 			}, 3000);
 		}	
 	});
-	var URLforGET = "https://marcowabot.herokuapp.com/add?tipeOfRequest=" + tipeOfRequest;
-	console.log(URLforGET);
-	xhr.open("POST", URLforGET);
-	xhr.setRequestHeader("Content-Type", "application/json");
+	var URLforPOST = "https://marcowabot.herokuapp.com/add?tipeOfRequest=" + tipeOfRequest;
+	console.log(URLforPOST);
+	xhr.open("POST", URLforPOST, true);
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xhr.send(myPayload);
 }
 
