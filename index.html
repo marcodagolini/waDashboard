@@ -248,19 +248,20 @@ function sendMyRequest(tipeOfRequest,myPayload){
 	var xhr = new XMLHttpRequest();
 	xhr.addEventListener("readystatechange", function () {
 		if (this.readyState === 4) {
-			if(xhr.response.tipeOfRequest === "massiveLoad"){
+			var myResponse = JSON.parse(xhr.response);
+			if(myResponse.tipeOfRequest === "massiveLoad"){
 				document.getElementById("massiveUploadLogs").innerHTML = "...done!";
 				document.getElementById("massiveUploadLogs").style = "color : green";
-			} else if (xhr.response.tipeOfRequest === "whiteList"){
+			} else if (myResponse.tipeOfRequest === "whiteList"){
 				document.getElementById("singleUploadLogs").innerHTML = "...done!";
 				document.getElementById("singleUploadLogs").style = "color : green";
-			} else if (xhr.response.tipeOfRequest === "blackList"){
+			} else if (myResponse.tipeOfRequest === "blackList"){
 				document.getElementById("singleUploadLogs").innerHTML = "...done!";
 				document.getElementById("singleUploadLogs").style = "color : green";
 			}
 
 			console.log(xhr.response);
-			console.log(xhr.response.tipeOfRequest);
+			console.log(myResponse.tipeOfRequest);
 			setTimeout(function(){
 				refreshAlerts();
 			}, 3000);
