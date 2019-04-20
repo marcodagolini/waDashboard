@@ -250,6 +250,7 @@ function sendMyRequest(tipeOfRequest,myPayload){
 	var xhr = new XMLHttpRequest();
 	xhr.addEventListener("readystatechange", function (tipeOfRequest) {
 		if (this.readyState === 4) {
+			console.log(tipeOfRequest);
 			if(tipeOfRequest === "massiveLoad"){
 				document.getElementById("massiveUploadLogs").innerHTML = "...done!";
 				document.getElementById("massiveUploadLogs").style = "color : green";
